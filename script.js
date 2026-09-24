@@ -1,4 +1,7 @@
-document.querySelector('#year').textContent = new Date().getFullYear();
+const offerDate = document.getElementById('offer-date');
+if (offerDate) {
+  offerDate.textContent = new Intl.DateTimeFormat('es-MX', { timeZone: 'America/Sao_Paulo', day: '2-digit', month: '2-digit', year: 'numeric' }).format(new Date());
+}
 
 document.querySelectorAll('.faq-item button').forEach((button) => {
   button.addEventListener('click', () => {
@@ -27,3 +30,43 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.08 });
 
 document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const enableInfiniteCarousel = (carousel) => {
+  const originalCards = Array.from(carousel.children);
+  originalCards.forEach((card) => {
+    const copy = card.cloneNode(true);
+    copy.setAttribute('aria-hidden', 'true');
+    carousel.append(copy);
+  });
+
+  let paused = false;
+  let lastFrame = 0;
+
+  const moveCarousel = (timestamp) => {
+    if (!lastFrame) lastFrame = timestamp;
+    const elapsed = timestamp - lastFrame;
+    lastFrame = timestamp;
+
+    if (!paused && carousel.scrollWidth > carousel.clientWidth) {
+      carousel.scrollLeft += elapsed * 0.025;
+      const loopPoint = carousel.scrollWidth / 2;
+      if (carousel.scrollLeft >= loopPoint) carousel.scrollLeft -= loopPoint;
+    }
+    window.requestAnimationFrame(moveCarousel);
+  };
+
+  ['mouseenter', 'pointerdown', 'touchstart'].forEach((eventName) => {
+    carousel.addEventListener(eventName, () => { paused = true; }, { passive: true });
+  });
+  ['mouseleave', 'pointerup', 'pointercancel', 'touchend'].forEach((eventName) => {
+    carousel.addEventListener(eventName, () => { paused = false; }, { passive: true });
+  });
+
+  window.requestAnimationFrame(moveCarousel);
+};
+
+if (!reducedMotion) {
+  document.querySelectorAll('.product-scroll, .essentials-scroll, .mechanism-carousel').forEach(enableInfiniteCarousel);
+}
