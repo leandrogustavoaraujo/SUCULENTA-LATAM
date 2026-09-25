@@ -9,8 +9,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1698121791282770');
+    fbq('track', 'PageView');
+  </script>
+  <!-- UTMify: mantém os parâmetros de campanha nos links de checkout -->
+  <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-subids async defer></script>
 </head>
 <body>
+  <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1698121791282770&amp;ev=PageView&amp;noscript=1"></noscript>
   <div class="offer-bar">OFERTA VÁLIDA HOY - <span id="offer-date"></span></div>
   <main>
     <section class="section hero" id="inicio">
@@ -220,7 +236,7 @@
               <li>Guía completa</li><li>Todos los módulos</li><li>Catálogo de productos</li><li>Guía de propagación</li><li>Checklist</li><li>Guía de problemas</li><li>Acceso inmediato</li>
             </ul>
             <div class="price"><s>US$59,90</s><div class="price-current"><strong>US$5,90</strong><b class="price-off">90% OFF</b></div><span>PAGO ÚNICO</span></div>
-            <a class="button button-gold pulse" href="#">QUIERO LA GUÍA</a>
+            <a class="button button-gold pulse" href="https://pay.hotmart.com/X107758819U?off=7bunsvy1&amp;checkoutMode=10" data-checkout-value="5.90">QUIERO LA GUÍA</a>
             <p class="secure"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 19 6v5c0 4.45-2.85 8.45-7 10-4.15-1.55-7-5.55-7-10V6l7-3Z"/><path d="m8.8 12 2.05 2.05L15.4 9.5"/></svg>Compra 100% segura</p>
           </article>
           <article class="price-card premium-plan">
@@ -230,7 +246,7 @@
             <ul class="check-list"><li>Todo el Plan Básico</li><li>Todos los bonos</li></ul>
             <div class="premium-extra"><b>+ SOS SUCULENTAS</b><p>Fotografía una planta y recibe orientación sobre qué podría estar ocurriendo y qué revisar.</p></div>
             <div class="price"><s>US$129,90</s><div class="price-current"><strong>US$19,90</strong><b class="price-off">85% OFF</b></div><span>GUÍA + SOS SUCULENTAS</span></div>
-            <a class="button button-gold pulse" href="#">QUIERO EL PLAN PREMIUM</a>
+            <a class="button button-gold pulse" href="https://pay.hotmart.com/X107758819U?off=2nnxe4nc&amp;checkoutMode=10" data-checkout-value="19.90">QUIERO EL PLAN PREMIUM</a>
             <p class="secure"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 19 6v5c0 4.45-2.85 8.45-7 10-4.15-1.55-7-5.55-7-10V6l7-3Z"/><path d="m8.8 12 2.05 2.05L15.4 9.5"/></svg>Compra 100% segura</p>
           </article>
         </div>

@@ -3,6 +3,17 @@ if (offerDate) {
   offerDate.textContent = new Intl.DateTimeFormat('es-MX', { timeZone: 'America/Sao_Paulo', day: '2-digit', month: '2-digit', year: 'numeric' }).format(new Date());
 }
 
+document.querySelectorAll('[data-checkout-value]').forEach((checkoutLink) => {
+  checkoutLink.addEventListener('click', () => {
+    if (typeof window.fbq === 'function') {
+      window.fbq('track', 'InitiateCheckout', {
+        value: Number(checkoutLink.dataset.checkoutValue),
+        currency: 'USD'
+      });
+    }
+  });
+});
+
 document.querySelectorAll('.faq-item button').forEach((button) => {
   button.addEventListener('click', () => {
     const item = button.closest('.faq-item');
