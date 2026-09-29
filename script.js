@@ -1,6 +1,6 @@
 const offerDate = document.getElementById('offer-date');
 if (offerDate) {
-  offerDate.textContent = new Intl.DateTimeFormat('es-MX', { timeZone: 'America/Sao_Paulo', day: '2-digit', month: '2-digit', year: 'numeric' }).format(new Date());
+  offerDate.textContent = new Intl.DateTimeFormat('pt-BR', { timeZone: 'America/Sao_Paulo', day: '2-digit', month: '2-digit', year: 'numeric' }).format(new Date());
 }
 
 document.querySelectorAll('[data-checkout-value]').forEach((checkoutLink) => {
