@@ -4,11 +4,27 @@ if (offerDate) {
 }
 
 document.querySelectorAll('[data-checkout-value]').forEach((checkoutLink) => {
+  const acceptedParameters = [
+    'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term',
+    'src', 'sck', 'fbclid', 'gclid'
+  ];
+  const checkoutUrl = new URL(checkoutLink.href);
+  const landingParameters = new URLSearchParams(window.location.search);
+
+  acceptedParameters.forEach((parameter) => {
+    const value = landingParameters.get(parameter);
+    if (value) checkoutUrl.searchParams.set(parameter, value);
+  });
+  checkoutLink.href = checkoutUrl.toString();
+
   checkoutLink.addEventListener('click', () => {
     if (typeof window.fbq === 'function') {
       window.fbq('track', 'InitiateCheckout', {
+        content_name: checkoutLink.dataset.checkoutValue === '27.90'
+          ? 'Método Suculenta Rentável — Plano Premium'
+          : 'Método Suculenta Rentável — Apostila',
         value: Number(checkoutLink.dataset.checkoutValue),
-        currency: 'USD'
+        currency: 'BRL'
       });
     }
   });
